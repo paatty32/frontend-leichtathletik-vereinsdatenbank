@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Athlete } from '../../athlete';
 import { AthleteCardComponent } from '../../athlete-card/athlete-card.component';
+import { AthleteServiceService } from '../../athlete-service.service';
 
 @Component({
   selector: 'la-startpassnummer',
@@ -14,19 +15,18 @@ import { AthleteCardComponent } from '../../athlete-card/athlete-card.component'
 export class StartpassnummerComponent {
 
   startpassnummer: number | null = null;
-  athletes: Array<Athlete> = []
+  athletes: Array<Athlete> = [];
 
-  search(): void {
-      const testAthlete = {
+  constructor(private athleteService: AthleteServiceService){}
 
-        startpassnummer: 1234,
-        name: 'Patrick',
-        surname: 'Boadu',
-        ageGroup: 'Hauptklasse',
+  searchByStartpassnumer(): void {
 
+    this.athleteService.searchAthleteByStartpassnummer(this.startpassnummer as number).subscribe(
+      data => {
+        this.athletes.push(data);
       }
-
-      this.athletes.push(testAthlete);
+    );
+  
   }
 
 }
