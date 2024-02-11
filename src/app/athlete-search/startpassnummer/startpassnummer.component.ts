@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Athlete } from '../../athlete';
 import { AthleteCardComponent } from '../../athlete-card/athlete-card.component';
-import { AthleteServiceService } from '../../athlete-service.service';
+import { AthleteService } from '../../athlete.service';
 
 @Component({
   selector: 'la-startpassnummer',
@@ -17,7 +17,7 @@ export class StartpassnummerComponent {
   startpassnummer: number | null = null;
   athletes: Array<Athlete> = [];
 
-  constructor(private athleteService: AthleteServiceService){}
+  constructor(private athleteService: AthleteService){}
 
   searchByStartpassnumer(): void {
 
