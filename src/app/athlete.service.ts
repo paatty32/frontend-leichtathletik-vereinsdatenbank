@@ -41,4 +41,14 @@ export class AthleteService {
 
   }
 
+  searchAthlesByAgeGroup(ageGroup: string){
+
+    const prefix = "/age-group"
+
+    const params = new HttpParams().set('ageGroup', ageGroup);
+
+    return this.http.get<Athlete[]>(this.url + prefix, {params})
+
+  }
+
 }
