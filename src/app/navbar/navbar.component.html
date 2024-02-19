@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-sm bg-success">
+    <div class="container-fluid">
+        <a class="navbar-brand">Vereinsdatenbank</a>
+        <ul class="navbar-nav me-auto">
+            <li  class="nav-item" ngbDropdown routerLinkActive="active">
+                <a class="nav-link" ngbDropdownToggle role="button" >Athletenprofile</a>
+                <ul ngbDropdownMenu>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a ngbDropdownItem routerLink="startpassnummer">Startpassnummer</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a ngbDropdownItem routerLink="name">Name</a>
+                    </li>
+                    <li class="nav-item" ngbDropdown routerLinkActive="active">
+                        <a ngbDropdownItem routerLink="altersklassen" role="button">Altersklassen</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
