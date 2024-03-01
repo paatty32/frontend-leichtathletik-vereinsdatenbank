@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { StartpassnummerComponent } from './athlete-search/startpassnummer/startpassnummer.component';
 import { NameFormComponent } from './athlete-search/name-form/name-form.component';
 import { AgeGroupFormComponent } from './athlete-search/age-group-form/age-group-form.component';
+import { AthleteProfileComponent } from './athlete-profile/athlete-profile.component';
 
 export const routes: Routes = [
     {
@@ -18,5 +19,10 @@ export const routes: Routes = [
     {
         path:'altersklassen',
         component: AgeGroupFormComponent
+    },
+
+    {
+        path:'startpassnummer/:id',
+        component: AthleteProfileComponent
     }
 ];
