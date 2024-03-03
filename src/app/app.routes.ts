@@ -22,7 +22,18 @@ export const routes: Routes = [
     },
 
     {
-        path:'startpassnummer/:id',
-        component: AthleteProfileComponent
+        path:'athletenprofil/:startpassnummer',
+        component: AthleteProfileComponent,
+        children: [
+            {
+                path: '',
+                component: AthleteProfileComponent
+            },
+            {
+                path:'athletenuebersicht',
+                component: AthleteProfileComponent
+            }
+        ]
     }
 ];
+
