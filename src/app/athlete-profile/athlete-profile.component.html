@@ -1,1 +1,28 @@
-<p>athlete-profile works!</p>
+<div class="container mt-2">
+    
+    <h1>{{name}} {{surname}}</h1>
+    <h2>Athletenprofil</h2>
+    <hr>
+
+    <la-athlete-profile-navbar></la-athlete-profile-navbar>
+
+    <div class="row mb-4">
+        <div class="col-sm-6">
+            <la-competition-number-card [startpassnummer]="startpassnummer"></la-competition-number-card>
+        </div>
+        <div class="col-sm-6">
+            <la-discipline-number-card [startpassnummer]="startpassnummer"></la-discipline-number-card>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <la-personal-best-card></la-personal-best-card>
+        </div>
+        <div class="col-sm-6">
+            <la-season-best-card></la-season-best-card>
+        </div>
+    </div>
+
+</div>
+
