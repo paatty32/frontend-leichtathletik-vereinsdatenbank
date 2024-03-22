@@ -30,7 +30,6 @@ export class PersonalBestCardComponent implements OnInit {
       this.competitionService.getPersonalBestsOfAthlete(this.startpassnummer).subscribe(
         data => {
           this.personalBests = data;
-          console.log(typeof this.personalBests[0].result)
         }
       )
     } else {
