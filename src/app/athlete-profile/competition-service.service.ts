@@ -20,4 +20,24 @@ export class CompetitionService {
     return this.http.get<PersonalBest[]>(this.url + prefix, {params});
 
   }
+
+  getDCompetitionCount(startpassnummer: number){
+
+    const prefix = "/count";
+
+    const params = new HttpParams().set('startpassnummer', startpassnummer);
+
+    return this.http.get<number>(this.url + prefix, {params});
+
+  }
+
+  getDisciplineCount(startpassnummer: number){
+
+    const prefix = "/countdiscipline";
+
+    const params = new HttpParams().set('startpassnummer', startpassnummer);
+
+    return this.http.get<number>(this.url + prefix, {params});
+
+  }
 }
