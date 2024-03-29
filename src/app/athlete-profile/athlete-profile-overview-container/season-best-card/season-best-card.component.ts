@@ -29,7 +29,7 @@ export class SeasonBestCardComponent implements OnInit {
   }
   ngOnInit(): void {
   
-    this.getCompetitionYears();
+    this.initializeActualSeasonBest();
     
     this.getSeasonBests();
 
@@ -44,7 +44,7 @@ export class SeasonBestCardComponent implements OnInit {
 
   }
 
-   getCompetitionYears(){
+   initializeActualSeasonBest(){
 
       this.competitionService.getCompetitionYears(this.startpassnummer).pipe(
         
@@ -58,7 +58,7 @@ export class SeasonBestCardComponent implements OnInit {
           this.selectedItem = this.seasonYears[0];
   
           return this.competitionService.getSeasonBest(this.startpassnummer, this.selectedItem).pipe(
-            
+
             catchError(err => {
               return throwError(() => err)
             })
