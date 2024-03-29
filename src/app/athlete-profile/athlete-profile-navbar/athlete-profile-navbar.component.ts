@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -8,17 +8,23 @@ import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/r
   templateUrl: './athlete-profile-navbar.component.html',
   styleUrl: './athlete-profile-navbar.component.css'
 })
-export class AthleteProfileNavbarComponent implements OnInit {
+export class AthleteProfileNavbarComponent  {
 
-  startpassnummer = 0;
-  name = "";
-  surname = "";
-  ageGroup = "";
-
+  @Input() startpassnummer = 0;
+  
   constructor(private router: Router, private params: ActivatedRoute){
 
   }
-  ngOnInit(): void {
-      
+
+  navigateToOverview() {
+
+    this.router.navigate(['athletenuebersicht/' + this.startpassnummer], {relativeTo: this.params, skipLocationChange: true })
+
   }
+
+  navigateToResult(){
+    this.router.navigate(['ergebnisse/' + this.startpassnummer], {relativeTo: this.params, skipLocationChange: true })
+  }
+
+
 }
