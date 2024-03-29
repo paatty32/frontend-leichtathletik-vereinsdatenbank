@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PersonalBest } from './personalBest';
+import { catchError, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,27 @@ export class CompetitionService {
     const params = new HttpParams().set('startpassnummer', startpassnummer);
 
     return this.http.get<number>(this.url + prefix, {params});
+
+  }
+
+  getCompetitionYears(startpassnummer: number){
+
+    const prefix ="/competitionyears";
+
+    const params = new HttpParams().set('startpassnummer', startpassnummer);
+
+    return this.http.get<Array<number>>(this.url + prefix, {params});
+
+  }
+  
+  getSeasonBest(startpassnummer: number, seasonYear: number){
+
+    const prefix = "/seasonbest";
+
+    const params = new HttpParams().set('startpassnummer', startpassnummer)
+                                   .set('year', seasonYear); 
+  
+     return this.http.get<PersonalBest[]>(this.url + prefix, {params})
 
   }
 }
