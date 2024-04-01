@@ -1,7 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PersonalBest } from './personalBest';
-import { catchError, of } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
+import { CompetitionResult } from './athlete-profile-result/CompetitionResult';
 
 @Injectable({
   providedIn: 'root'
@@ -60,6 +61,17 @@ export class CompetitionService {
                                    .set('year', seasonYear); 
   
      return this.http.get<PersonalBest[]>(this.url + prefix, {params})
+
+  }
+
+  getCompetitionResultsByYear(startpassnummer: number, seasonYear: number): Observable<CompetitionResult> {
+
+    const prefix = "/results"
+
+    const params = new HttpParams().set('startpassnummer', startpassnummer)
+                                   .set('year', seasonYear); 
+  
+     return this.http.get<CompetitionResult>(this.url + prefix, {params})
 
   }
 }
