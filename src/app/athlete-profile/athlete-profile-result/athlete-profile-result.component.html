@@ -1,0 +1,50 @@
+<form>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-4" (change)="onSelectChange($event)">
+                <select class="form-select" [(ngModel)]="selectedCompYear" name="selectedCompYear">
+                  <option *ngFor="let year of seasonYears" value="{{year}}">
+                    {{year}}
+                  </option>
+                </select>
+              </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div>
+                <div *ngFor="let dicipline of competitionsResults | keyvalue">
+                    <h3>{{dicipline.key}}</h3>
+
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">Datum</th>
+                            <th scope="col">Wettkampf</th>
+                            <th scope="col">Zeit</th>
+                            <th scope="col">Ergebnisliste</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let value of dicipline.value">
+                                <td>{{value.date}}</td>
+                                <td>{{value.place}}</td>
+                                <td>{{value.result}}</td>
+                                <td *ngIf="value.resultLink !=='-' && value.resultLink!=='nan'">
+                                    <a href="{{value.resultLink}}">Ergebnisliste</a>
+                                </td>
+                                <td><button class="btn btn-outline-primary" (click)="onClick()">Button</button></td>
+                                
+                            </tr>
+                            <tr>
+                                <div [ngbCollapse]="isCollapsed">
+                                    <p>Test</p>
+                                 </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form> 

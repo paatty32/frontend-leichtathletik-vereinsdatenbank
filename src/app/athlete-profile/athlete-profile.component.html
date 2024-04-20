@@ -1,0 +1,16 @@
+<div class="container mt-2">
+    
+    <h1>{{name}} {{surname}}</h1>
+    <h2>Athletenprofil</h2>
+    <h3>Altersklasse: {{ageGroup}}</h3>
+    <hr>
+
+    <la-athlete-profile-navbar 
+        [startpassnummer]="startpassnummer">
+    </la-athlete-profile-navbar>
+   
+    <router-outlet></router-outlet>
+
+
+</div>
+

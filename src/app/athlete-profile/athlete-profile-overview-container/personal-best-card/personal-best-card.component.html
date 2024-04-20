@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="card border-success mb-4 ">
+        <div class="card-header bg-success">
+            <h5>Persönliche Bestleistungen</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <div *ngFor="let personalBest of personalBests">
+                <li class="list-group-item">
+                    <span class="badge bg-success float-end">{{personalBest.result}}</span> 
+                    <h4>{{personalBest.dicipline}}</h4>
+                    {{personalBest.place}}: {{personalBest.date}}                        
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>
