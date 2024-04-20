@@ -9,6 +9,7 @@
     </ul>
 
     <div class="card-body">
-        <button class="btn btn-outline-success">Auswählen</button>
+        <button class="btn btn-outline-success" [routerLink]="['../athletenprofil', athlete?.startpassnummer, {name: athlete?.name, nachname: athlete?.surname, altersklasse: athlete?.ageGroup}
+       ]">Auswählen</button>
     </div>
   </div>

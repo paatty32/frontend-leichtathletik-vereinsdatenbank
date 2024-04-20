@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="card border-success">
+        <div class="card-header bg-success">
+            <h5>Saisonbestleistungen {{selectedItem}}</h5>
+            <div ngbDropdown>
+                <p ngbDropdownToggle role="button"  id="dropdownBasic" >Weitere Jahre</p>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <div *ngFor="let year of seasonYears ">
+                        <button ngbDropdownItem (click)="onDropDownSelect(year)">{{year}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <ul class="list-group list-group-flush">
+                <div *ngFor="let seasonBest of seasonBests">
+                    <li class="list-group-item">
+                        <span class="badge bg-success float-end">{{seasonBest.result}}</span> 
+                        <h4>{{seasonBest.dicipline}}</h4>
+                        {{seasonBest.place}}: {{seasonBest.date}}                        
+                    </li>
+                </div>
+            </ul>
+        
+    </div>
+</div>
