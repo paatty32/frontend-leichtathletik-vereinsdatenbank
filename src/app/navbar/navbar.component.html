@@ -1,22 +1,26 @@
 <nav class="navbar navbar-expand-sm bg-success">
     <div class="container-fluid">
         <a class="navbar-brand">Vereinsdatenbank</a>
-        <ul class="navbar-nav me-auto">
-            <li  class="nav-item" ngbDropdown routerLinkActive="active">
-                <a class="nav-link" ngbDropdownToggle role="button" >Athletenprofile</a>
-                <ul ngbDropdownMenu>
-                    <li class="nav-item" routerLinkActive="active">
-                        <a ngbDropdownItem routerLink="startpassnummer">Startpassnummer</a>
-                    </li>
-                    <li class="nav-item" routerLinkActive="active">
-                        <a ngbDropdownItem routerLink="name">Name</a>
-                    </li>
-                    <li class="nav-item" ngbDropdown routerLinkActive="active">
-                        <a ngbDropdownItem routerLink="altersklassen" role="button">Altersklassen</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+		<button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">&#9776;
+        </button>    
+		<div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li  class="nav-item" ngbDropdown routerLinkActive="active">
+                    <a class="nav-link" ngbDropdownToggle role="button" >Athletenprofile</a>
+                    <ul ngbDropdownMenu>
+                        <li class="nav-item" routerLinkActive="active">
+                            <a ngbDropdownItem routerLink="startpassnummer" (click)="isMenuCollapsed = true">Startpassnummer</a>
+                        </li>
+                        <li class="nav-item" routerLinkActive="active">
+                            <a ngbDropdownItem routerLink="name" (click)="isMenuCollapsed = true">Name</a>
+                        </li>
+                        <li class="nav-item" ngbDropdown routerLinkActive="active">
+                            <a ngbDropdownItem routerLink="altersklassen" role="button" (click)="isMenuCollapsed = true">Altersklassen</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
