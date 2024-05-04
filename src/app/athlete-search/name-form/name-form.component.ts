@@ -1,48 +1,31 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { AthleteService } from '../../athlete.service';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Athlete } from '../../athlete';
 import { AthleteCardComponent } from '../../athlete-card/athlete-card.component';
 import { CommonModule } from '@angular/common';
+import { AthleteNameFormService } from './athlete-name-form.service';
 
 @Component({
   selector: 'la-name-form',
   standalone: true,
-  imports: [FormsModule, AthleteCardComponent, CommonModule],
+  imports: [FormsModule, AthleteCardComponent, CommonModule, ReactiveFormsModule],
   templateUrl: './name-form.component.html',
   styleUrl: './name-form.component.css'
 })
-export class NameFormComponent {
+export class NameFormComponent implements OnInit {
 
-  vorname: string  = "";
-  nachname: string = "";
   athletes: Array<Athlete> | null = null;
+  nameFormControl: FormControl;
 
-  constructor(private athleteService: AthleteService){}
+  $athletes = this.athleteService.athletes$;
 
-  searchAthleteByName(): void{
-
-    if(this.vorname == "" && this.nachname != ""){
-
-      this.athleteService.searchAthleteBySurname(this.nachname).subscribe(
-        data => {
-          this.athletes = data;
-          this.nachname = "";
-        }
-      );
-    } else if(this.vorname != "" && this.nachname == ""){
-
-      this.athleteService.searchAthleteByName(this.vorname).subscribe(
-        data => {
-          this.athletes = data
-          this.vorname = "";
-        }
-      );
-
-    }
-
+  constructor(private athleteService: AthleteNameFormService){
+    this.nameFormControl = new FormControl();
   }
 
-  
-
+  ngOnInit(): void {
+    this.nameFormControl.valueChanges.subscribe((inputName: string) => {
+      this.athleteService.searchAthleteByName((inputName));
+    })
+  }
 }
