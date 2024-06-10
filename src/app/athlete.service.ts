@@ -3,13 +3,18 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Athlete } from './athlete';
 import { BehaviorSubject, Observable, catchError, debounceTime, distinctUntilChanged, filter, map, of, switchMap } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AthleteService {
 
-  url: string = "http://localhost:8080/api/v1/athlete"
+  baseUrl: string = environment.baseUrl;
+
+  apiVers: string = "/api/v1/athlete"
+
+  url: string = this.baseUrl + this.apiVers;
 
   constructor(private http: HttpClient) {}
 

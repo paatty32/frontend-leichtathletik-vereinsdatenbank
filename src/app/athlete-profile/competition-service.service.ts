@@ -3,13 +3,18 @@ import { Injectable } from '@angular/core';
 import { PersonalBest } from './personalBest';
 import { Observable, catchError, of } from 'rxjs';
 import { CompetitionResult } from './athlete-profile-result/CompetitionResult';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompetitionService {
 
-  url: string = "http://localhost:8080/api/v1/competition"
+  baseUrl: string = environment.baseUrl;
+
+  apiVers: string = "/api/v1/competition"
+
+  url: string = this.baseUrl + this.apiVers;
 
   constructor(private http: HttpClient) { }
 
